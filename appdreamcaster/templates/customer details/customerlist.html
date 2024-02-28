@@ -1,0 +1,88 @@
+{% extends 'layouts/base.html' %} {% load static %} {% block content %}
+<!-- [ Main Content ] start -->
+<div class="row">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-header">
+    <div class="row">
+        <div class="col-6">
+            <h2>Customer Detailed List</h2>
+        </div>
+       
+    </div>
+</div>
+<div class="table-responsive">
+  <form method="get">
+    {% csrf_token %} {{myFilter.form}}
+    <button class="btn btn-primary" type="submit">Search</button><br />
+   
+  </form>
+</div>
+
+        <div class="card-body table-border-style">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Boarding</th>
+                  <th>Destination</th>
+                  <th>Date Of Travel</th>
+                  <th>Update</th>
+                   <th>Print</th>
+                  <th>Delete</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                {% for list in all %}
+                <tr>
+                  <td>{{ list.id }}</td>
+                  <td>{{ list.customerenqid.name }}</td>
+                  <td>{{ list.borading }}</td>
+                  <td>{{ list.destination }}</td>
+                  <td>{{ list.date }}</td>
+                  <th scope="col">
+                  <a href="{% url 'update_product' list.id %}"
+                    ><button type="button" class="btn btn-primary">
+                      Update
+                    </button></a
+                  >
+                </th>
+                </th>
+                  <th scope="col">
+                  <a href="{% url 'update_product' list.id %}"
+                    ><button type="button" class="btn btn-warning">
+                      Print
+                    </button></a
+                  >
+                </th>
+                </th>
+                  <th scope="col">
+                  <a href="{% url 'delete_product' list.id %}"
+                    ><button type="button" class="btn btn-danger">
+                      Delete
+                    </button></a
+                  >
+                </th>
+                
+                  
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- [ Main Content ] end -->
+    {% endblock content %} {% block extrajs %}
+    <!-- custom-chart js -->
+    <script src="{% static 'assets/js/pages/dashboard-main.js' %}"></script>
+    <!-- Apex Chart -->
+    <script src="{% static 'assets/js/plugins/apexcharts.min.js' %}"></script>
+    {% endblock extrajs %}
+  </div>
+</div>

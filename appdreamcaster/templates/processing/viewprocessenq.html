@@ -1,0 +1,67 @@
+{% extends 'layouts/base.html' %} {% load static %} {% block content %}
+<!-- [ Main Content ] start -->
+<div class="row">
+<div class="col-xl-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>Customer Details</h2>
+                
+            </div>
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                     
+                    <table class="table table-striped">
+                       
+                        <tbody>
+                            <tr>
+                                <td>Name :</td>
+                                <th>{{all.name}}</th>
+                                
+                            </tr>
+                            <tr>
+                                <td>Destination :</td>
+                                <th>{{all.destination}}</th>
+                                
+                            </tr><tr>
+                                <td>Date of Travel :</td>
+                                <th>{{all.date_of_travel}}</th>
+                                
+                            </tr>
+                            <tr>
+                                <td>Phone Number :</td>
+                                <th>{{all.phone_number}}</th>
+                                
+                            </tr>
+                            <tr>
+                                <td>Group :</td>
+                                <th>{{all.group}}</th>
+                                
+                            </tr>
+                              <tr>
+                                <td>Package :</td>
+                                <th>{{all.package}}</th>
+                                
+                            </tr>
+                            </tr>
+                              <tr>
+                                <td>Current Status :</td>
+                                <th>{{all.status}}</th>
+                                
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+             <a href="{% url 'changefollowup_customerenq' all.id %}"
+                    ><button type="button" class="btn btn-primary">
+                      Follow up the Lead
+                    </button></a
+                  >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- [ Main Content ] end -->
+    {% endblock content %}
+  </div>
+</div>

@@ -1,0 +1,54 @@
+{% extends 'layouts/auth_base.html' %}
+{% load static %}
+{% block content %}
+<!-- [ auth-signin ] start -->
+<div class="auth-wrapper">
+	<div class="auth-content">
+		<div class="card">
+			<div class="row align-items-center text-center">
+				<div class="col-md-12">
+					<div class="card-body">
+						{% comment %} <img src="{% static 'assets/images/logo-dark.png' %}" alt="" class="img-fluid mb-4"> {% endcomment %}
+						<h3 class="mb-3 f-w-400">Dream Caster Holidays</h3>
+						<h4 class="mb-3 f-w-400">Login</h4>
+						<div class="text-center text-muted mb-4">
+                {% if msg %}
+                <p style="color: red;">{{ msg }}</p>
+                {% else %}
+                <p style="color: black;">
+                  Add your credentials
+                </p>
+                {% endif %}
+              </div>
+						<form method="post">
+							{% csrf_token %}
+							{% if form.non_field_errors %}
+							{% for error in form.non_field_errors  %}
+								<small class="text-danger mb-3">{{ error }}</small>
+							{% endfor %}
+							{% endif %}
+							{% for field in form %}
+							<div class="input-group mb-3">
+								<span class="input-group-text">
+									<i class="feather {% if field.name == 'username' %} icon-user {% else %}  icon-lock {% endif %}"></i>
+								</span>
+								{{field}}
+							</div>
+							<small class="text-danger">{{ field.errors }}</small>
+       						 {% endfor %}
+							 
+							<div class="form-group text-left mt-2">
+								
+							</div>
+							<button class="btn btn-block btn-primary mt-2 mb-4">Login</button>
+							
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [ auth-signin ] end -->
+{% endblock content %}

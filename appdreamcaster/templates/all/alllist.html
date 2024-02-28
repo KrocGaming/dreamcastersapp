@@ -1,0 +1,86 @@
+{% extends 'layouts/base.html' %} {% load static %} {% block content %}
+<!-- [ Main Content ] start -->
+<div class="row">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-header">
+    <div class="row">
+        <div class="col-6">
+            <h2>All List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a href="{% url 'create_customerenq' %}" class="btn btn-primary btn-lg">
+                Add New Enquiry
+            </a>
+        </div>
+    </div>
+</div>
+
+        <div class="card-body table-border-style">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Destination</th>
+                  <th>Date Of Travel</th>
+                  <th>Phone Number</th>
+                  <th>Group</th>
+                  <th>Package</th>
+                 
+                  <th>Status</th>
+                  <th>User</th>
+                  <th>Created Date</th>
+                  <th>Edit</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for list in all %}
+                <tr>
+                  <td>{{ list.id }}</td>
+                  <td>{{ list.name }}</td>
+                  <td>{{ list.destination }}</td>
+                  <td>{{ list.date_of_travel }}</td>
+                  <td>{{ list.phone_number }}</td>
+                  <td>{{ list.group }}</td>
+                  <td>{{ list.package }}</td>
+                 
+                  <td>{{ list.status }}</td>
+                  
+                  <td>{{ list.user }}</td>
+                  <td>{{ list.created_on }}</td>
+                  <th scope="col">
+                  <a href="{% url 'update_customerenq' list.id %}"
+                    ><button type="button" class="btn btn-primary">
+                      Edit
+                    </button></a
+                  >
+                </th>
+                  <th scope="col">
+                  <a href="{% url 'view_customerenq' list.id %}"
+                    ><button type="button" class="btn btn-primary">
+                      Accept
+                    </button></a
+                  >
+                </th>
+                  
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- [ Main Content ] end -->
+    {% endblock content %} {% block extrajs %}
+    <!-- custom-chart js -->
+    <script src="{% static 'assets/js/pages/dashboard-main.js' %}"></script>
+    <!-- Apex Chart -->
+    <script src="{% static 'assets/js/plugins/apexcharts.min.js' %}"></script>
+    {% endblock extrajs %}
+  </div>
+</div>
